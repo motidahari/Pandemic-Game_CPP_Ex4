@@ -1,155 +1,83 @@
-/**
- * Demo program for Pandemic exercise - OperationsExpert role
- * 
- * Author: Erel Segal-Halevi
- * Since : 2021-04
- */
 
-#include "Board.hpp"
-#include "City.hpp"
+
 #include "Color.hpp"
-
-#include "OperationsExpert.hpp"
-
-using namespace pandemic;
-
+#include "City.hpp"
 #include <iostream>
-#include <stdexcept>
+
+// using namespace pandemic;
 using namespace std;
 
 int main() {
-	Board board;  // Initialize an empty board (with 0 disease cubes in any city).
-	board[City::Kinshasa] = 3;      // put 3 yellow disease cubes in Kinshasa.
-	board[City::Kinshasa] = 2;      // change number of disease cubes in Kinshasa to 2.
-	board[City::MexicoCity] = 3;    // put 3 yellow disease cubes in MexicoCity
-	board[City::HoChiMinhCity] = 1; // put 1 red disease cube in HoChiMinhCity
-	board[City::Chicago] = 1;       // put 1 blue disease cube in Chicago
-
-	OperationsExpert player {board, City::Atlanta};  // initialize an "operations expert" player on the given board, in Atlanta.
-	player.take_card(City::Johannesburg)
-	 .take_card(City::Khartoum)
-	 .take_card(City::SaoPaulo)
-	 .take_card(City::BuenosAires)
-	 .take_card(City::HoChiMinhCity);
+	/*
+	* check for color
+	*/
+	cout << "0 = "<< getColorAsString(0) << " == Black \n";
+	cout << "1 = " << getColorAsString(1)<< " == Blue \n";
+	cout << "2 = " << getColorAsString(2)<< " == Red \n";
+	cout << "3 = " << getColorAsString(3)<< " == Yellow \n";
+	cout << "4 = " << getColorAsString(4)<< " == Yellow \n\n\n";
 
 
-	/* build action */
-
-	player.build();  // legal action: you build a research station in Atlanta.
-		// NOTE: you do not have the Atlanta card, so for other roles this would throw an exception.
-		//       But for the OperationsExpert it is legal, since he may build a research station without a card.
+	
 
 
-	/* drive action */
-
-	player.drive(City::Washington);  // legal action: you drive from Atlanta to a connected city.
-	try {
-		player.drive(City::Madrid);  // illegal action: Madrid is not connected to Washington.
-	} catch (const exception& ex) {
-	 	cout << "   caught exception: " << ex.what() << endl;  // prints a meaningful error message.
-	}
-
-
-	/* fly_direct action */
-
-	player.fly_direct(City::Johannesburg);  // legal action: you discard the Johannesburg card and fly to Johannesburg.
-	try {
-		player.fly_direct(City::Taipei);  // illegal action: you do not have the card of Taipei.
-	} catch (const exception& ex) {
-	 	cout << "   caught exception: " << ex.what() << endl;  // prints a meaningful error message.
-	}
-
-
-	/* treat action */
-
-	player.drive(City::Kinshasa);    // legal action: you move from Johannesburg to a connected city.
-	cout << board[City::Kinshasa] << endl; // 2
-	player.treat(City::Kinshasa);    // legal action: you remove 1 disease cube from current city (1 cube remains).
-	cout << board[City::Kinshasa] << endl; // 1
-	player.treat(City::Kinshasa);    // legal action: you remove 1 disease cube from current city (0 cubes remain).
-	cout << board[City::Kinshasa] << endl; // 0
-	try {
-		player.treat(City::Kinshasa);  // illegal action: no more cubes remain in Kinshasa.
-	} catch (const exception& ex) {
-	 	cout << "   caught exception: " << ex.what() << endl;  // prints a meaningful error message.
-	}
-	try {
-		player.treat(City::Washington);  // illegal action: you are not in Washington.
-	} catch (const exception& ex) {
-	 	cout << "   caught exception: " << ex.what() << endl;  // prints a meaningful error message.
-	}
-
-
-	/* fly_charter action */
-
-	player.drive(City::Khartoum)
-	 .fly_charter(City::Sydney);  // legal action: you discard the Khartoum card and fly to Sydney.
-
-	try {
-		player.fly_charter(City::Seoul);  // illegal action: you do not have the Sydney card (the card of the city you are in).
-	} catch (const exception& ex) {
-	 	cout << "   caught exception: " << ex.what() << endl;  // prints a meaningful error message.
-	}
-
-
-	/* build action */
-
-	player.drive(City::LosAngeles);  // legal action: note that LosAngeles is connected to Sydney.
-	player.build();     // legal action: build a research station in LosAngeles.
-		// NOTE: you do not have the LosAngeles card, so for other roles this would throw an exception.
-		//       But for the OperationsExpert it is legal, since he may build a research station without a card.
-		
+	/*
+	* check for city
+	*/
+	
+	cout << getCityAsString(City::Algiers) << " == Algiers \n";
+	cout << getCityAsString(City::Atlanta) << " == Atlanta \n";
+	cout << getCityAsString(City::Baghdad) << " == Baghdad \n";
+	cout << getCityAsString(City::Bangkok) << " == Bangkok \n";
+	cout << getCityAsString(City::Beijing) << " == Beijing \n";
+	cout << getCityAsString(City::Bogota) << " == Bogota \n";
+	cout << getCityAsString(City::BuenosAires) << " == BuenosAires \n";
+	cout << getCityAsString(City::Cairo) << " == Cairo \n";
+	cout << getCityAsString(City::Chennai) << " == Chennai \n";
+	cout << getCityAsString(City::Chicago) << " == Chicago \n";
+	cout << getCityAsString(City::Delhi) << " == Delhi \n";
+	cout << getCityAsString(City::Essen) << " == Essen \n";
+	cout << getCityAsString(City::HoChiMinhCity) << " == HoChiMinhCity \n";
+	cout << getCityAsString(City::HongKong) << " == HongKong \n";
+	cout << getCityAsString(City::Istanbul) << " == Istanbul \n";
+	cout << getCityAsString(City::Jakarta) << " == Jakarta \n";
+	cout << getCityAsString(City::Johannesburg) << " == Johannesburg \n";
+	cout << getCityAsString(City::Karachi) << " == Karachi \n";
+	cout << getCityAsString(City::Khartoum) << " == Khartoum \n";
+	cout << getCityAsString(City::Kinshasa) << " == Kinshasa \n";
+	cout << getCityAsString(City::Kolkata) << " == Kolkata \n";
+	cout << getCityAsString(City::Lagos) << " == Lagos \n";
+	cout << getCityAsString(City::Lima) << " == Lima \n";
+	cout << getCityAsString(City::London) << " == London \n";
+	cout << getCityAsString(City::LosAngeles) << " == LosAngeles \n";
+	cout << getCityAsString(City::Madrid) << " == Madrid \n";
+	cout << getCityAsString(City::Manila) << " == Manila \n";
+	cout << getCityAsString(City::MexicoCity) << " == MexicoCity \n";
+	cout << getCityAsString(City::Miami) << " == Miami \n";
+	cout << getCityAsString(City::Milan) << " == Milan \n";
+	cout << getCityAsString(City::Montreal) << " == Montreal \n";
+	cout << getCityAsString(City::Moscow) << " == Moscow \n";
+	cout << getCityAsString(City::Mumbai) << " == Mumbai \n";
+	cout << getCityAsString(City::NewYork) << " == NewYork \n";
+	cout << getCityAsString(City::Osaka) << " == Osaka \n";
+	cout << getCityAsString(City::Paris) << " == Paris \n";
+	cout << getCityAsString(City::Riyadh) << " == Riyadh \n";
+	cout << getCityAsString(City::SanFrancisco) << " == SanFrancisco \n";
+	cout << getCityAsString(City::Santiago) << " == Santiago \n";
+	cout << getCityAsString(City::SaoPaulo) << " == SaoPaulo \n";
+	cout << getCityAsString(City::Seoul) << " == Seoul \n";
+	cout << getCityAsString(City::Shanghai) << " == Shanghai \n";
+	cout << getCityAsString(City::StPetersburg) << " == StPetersburg \n";
+	cout << getCityAsString(City::Sydney) << " == Sydney \n";
+	cout << getCityAsString(City::Taipei) << " == Taipei \n";
+	cout << getCityAsString(City::Tehran) << " == Tehran \n";
+	cout << getCityAsString(City::Tokyo) << " == Tokyo \n";
+	cout << getCityAsString(City::Washington) << " == Washington \n";
 
 
-	/* fly_shuttle action */
+	return 0;
+}	
 
-	player.fly_shuttle(City::Atlanta); // legal action: you fly from one research station to another. 
-	player.fly_shuttle(City::LosAngeles); // legal action: you fly from one research station to another.
-	try {
-		player.fly_shuttle(City::Chicago); // illegal action: there is no research station in Chicago.
-	} catch (const exception& ex) {
-	 	cout << "   caught exception: " << ex.what() << endl;  // prints a meaningful error message.
-	}
-
-
-	/* discover_cure action */
-
-	try {
-		player.discover_cure(Color::Yellow); // illegal action: you only have 2 yellow cards remaining.
-	} catch (const exception& ex) {
-	 	cout << "   caught exception: " << ex.what() << endl;  // prints a meaningful error message.
-	}
-
-	player.take_card(City::Miami)
-	 .take_card(City::Bogota)
-	 .take_card(City::Lima);
-
-	player.discover_cure(Color::Yellow); // legal action: you discard 5 yellow cards and discover a yellow cure.
-	try {
-		player.fly_direct(City::Miami); // illegal action: you discarded the Miami card to discover a cure, so you cannot use this card.
-	} catch (const exception& ex) {
-	 	cout << "   caught exception: " << ex.what() << endl;  // prints a meaningful error message.
-	}
-
-	/* treat action after discovering a cure */
-
-	player.drive(City::MexicoCity); 
-	cout << board[City::MexicoCity] << endl; // 3
-	player.treat(City::MexicoCity);   // you now remove ALL disease cubes from MexicoCity, since there is a yelllow cure.
-	cout << board[City::MexicoCity] << endl; // 0
-
-
-	/* clean the board */
-
-	cout << board << endl;  // print the board in any reasonable format.
-	cout << board.is_clean() << endl;  // print "0" - the board is not clean.
-
-	player.drive(City::Chicago)
-	 .treat(City::Chicago)             // remove one disease cube - there is no blue cure yet.
-     .fly_direct(City::HoChiMinhCity)
-	 .treat(City::HoChiMinhCity);      // remove one disease cube - there is no red cure yet.
-
-	cout << board << endl;  // prints the board in any reasonable format.
-	cout << board.is_clean() << endl;  // prints "1" - the board is clean - congratulations!!! You treated all diseases!!!
-}
-
+/*
+clear && clang-9 -o run main.cpp -lstdc++ && ./run
+*/
