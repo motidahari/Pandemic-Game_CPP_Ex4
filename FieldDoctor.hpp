@@ -11,10 +11,15 @@ namespace pandemic{
         
          public:
             FieldDoctor(Board& board, City city): Player(board, city) , name("FieldDoctor"){} 
-            ~FieldDoctor(){}
+            Player& treat(City city);
+            // Player& drive(City city); 
+            // Player& fly_charter(City city);
+            // Player& fly_shuttle(City city);
+            // Player& fly_direct(City city);
+            // ~FieldDoctor(){}
 
-            Player& treat(City c) override {std::cout << "treat() override FieldDoctor" << std::endl; return *this;}
-            std::string role() override{std::cout << "role() override FieldDoctor" << std::endl; return "role() override FieldDoctor";}
+            // Player& treat(City c)  {std::cout << "treat() override FieldDoctor" << std::endl; return *this;}
+            // std::string role() {std::cout << "role() override FieldDoctor" << std::endl; return "role() override FieldDoctor";}
 
     };
 }

@@ -4,25 +4,52 @@
 // #include "Board.cpp"
 #include <map>
 #include <set>
+#include <stdexcept>
+#include <exception>
 #include <iostream>
+#include <fstream>
+#include <stdio.h>
+#include <string.h>
 
 namespace pandemic{
+    struct Node {
+        Color color;
+        std::set<City> neighbors;
+        int disease_level;
+        bool research_station;
+    };
     class Board {
-
-          std::map<City, std::set<City>> Neighbors_graph;
-          std::map<City, int> Disease_level;
-        //   std::set<City,int> Disease_level_get;
-          std::set<City> Research_station;
-          std::map<Color, bool> Cure_discovered;
-
-        
+        private:
+            std::map<City, Node> vertex;
+            std::map<Color, bool> Cure_discovered;
         public:
-            Board(){}
-            ~Board(){}
+            Board(){
+                std::ifstream units_file{"cities_map.txt"};
+                initColor();
+                initGraph(units_file);
+            }
+
             int& operator[](City city);
-            const int operator[](City city) const ;
+
+            bool is_connected(const City city1,const City city2);
             bool is_clean();
-            // void remove_cures();
-            friend std::ostream& operator<<(std::ostream& os ,const Board& board);
+
+            void set_Cure_discovered(Color color);
+            void remove_cures();
+            void printMap();
+            
+            void printCure_discovered();
+            void initGraph(std::ifstream& units_file);
+            void initColor();
+            std::map<City, Node>& getVertex(){
+                return this->vertex;
+            }
+            std::map<Color, bool>& getCure_discovered(){
+                return this->Cure_discovered;
+            }
+            friend std::ostream& operator<<(std::ostream&,const Board&);
+
+
     };
 }
+

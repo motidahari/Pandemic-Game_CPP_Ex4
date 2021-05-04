@@ -11,9 +11,9 @@ namespace pandemic{
         
          public:
             Virologist(Board& board, City city): Player(board, city) , name("Virologist"){}
-            ~Virologist(){}
-            Player& treat(City c) override{std::cout << "treat() override Virologist" << std::endl; return *this;}
-            std::string role() override{std::cout << "role() override Virologist" << std::endl; return "role() override Virologist";}
+            // ~Virologist(){}
+            // Player& treat(City c) {std::cout << "treat() override Virologist" << std::endl; return *this;}
+            // std::string role() {std::cout << "role() override Virologist" << std::endl; return "role() override Virologist";}
 
 
     };

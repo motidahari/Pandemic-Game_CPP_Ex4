@@ -11,9 +11,9 @@ namespace pandemic{
 
          public:
             Researcher(Board& board, City city):Player(board, city) , name("Researcher"){}
-            ~Researcher(){}
-            Player& discover_cure(Color color) override{std::cout << "discover_cure() override Researcher" << std::endl; return *this;}
-            std::string role() override{std::cout << "role() override Researcher" << std::endl; return "role() override Researcher";}
+            // ~Researcher(){}
+            // Player& discover_cure(Color color) {std::cout << "discover_cure() override Researcher" << std::endl; return *this;}
+            // std::string role() {std::cout << "role() override Researcher" << std::endl; return "role() override Researcher";}
 
     };
 }

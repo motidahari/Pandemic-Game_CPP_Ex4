@@ -11,9 +11,9 @@ namespace pandemic{
 
          public:
             GeneSplicer(Board& board, City city): Player(board, city) , name("GeneSplicer"){}
-            ~GeneSplicer(){}
-            Player& discover_cure(Color color) override {std::cout << "discover_cure() override GeneSplicer" << std::endl; return *this;}
-            std::string role() override{std::cout << "role() override GeneSplicer" << std::endl; return "role() override GeneSplicer";}
+            // ~GeneSplicer(){}
+            // Player& discover_cure(Color color)  {std::cout << "discover_cure() override GeneSplicer" << std::endl; return *this;}
+            // std::string role() {std::cout << "role() override GeneSplicer" << std::endl; return "role() override GeneSplicer";}
 
     };
 }

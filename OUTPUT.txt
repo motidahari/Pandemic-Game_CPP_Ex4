@@ -1,0 +1,293 @@
+Cure_discovered[Black] = 0
+Cure_discovered[Blue] = 0
+Cure_discovered[Red] = 0
+Cure_discovered[Yellow] = 0
+
+mat[Algiers] = {
+	color = Black, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Cairo, Istanbul, Madrid, Paris}
+}
+mat[Atlanta] = {
+	color = Blue, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Chicago, Miami, Washington}
+}
+mat[Baghdad] = {
+	color = Black, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Cairo, Istanbul, Karachi, Riyadh, Tehran}
+}
+mat[Bangkok] = {
+	color = Red, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Chennai, HoChiMinhCity, HongKong, Jakarta, Kolkata}
+}
+mat[Beijing] = {
+	color = Red, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Seoul, Shanghai}
+}
+mat[Bogota] = {
+	color = Yellow, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{BuenosAires, Lima, MexicoCity, Miami, SaoPaulo}
+}
+mat[BuenosAires] = {
+	color = Yellow, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Bogota, SaoPaulo}
+}
+mat[Cairo] = {
+	color = Black, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Algiers, Baghdad, Istanbul, Khartoum, Riyadh}
+}
+mat[Chennai] = {
+	color = Black, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Bangkok, Delhi, Jakarta, Kolkata, Mumbai}
+}
+mat[Chicago] = {
+	color = Blue, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Atlanta, LosAngeles, MexicoCity, Montreal, SanFrancisco}
+}
+mat[Delhi] = {
+	color = Black, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Chennai, Karachi, Kolkata, Mumbai, Tehran}
+}
+mat[Essen] = {
+	color = Blue, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{London, Milan, Paris, StPetersburg}
+}
+mat[HoChiMinhCity] = {
+	color = Red, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Bangkok, HongKong, Jakarta, Manila}
+}
+mat[HongKong] = {
+	color = Red, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Bangkok, HoChiMinhCity, Kolkata, Manila, Shanghai, Taipei}
+}
+mat[Istanbul] = {
+	color = Black, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Algiers, Baghdad, Cairo, Milan, Moscow, StPetersburg}
+}
+mat[Jakarta] = {
+	color = Red, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Bangkok, Chennai, HoChiMinhCity, Sydney}
+}
+mat[Johannesburg] = {
+	color = Yellow, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Khartoum, Kinshasa}
+}
+mat[Karachi] = {
+	color = Black, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Baghdad, Delhi, Mumbai, Riyadh, Tehran}
+}
+mat[Khartoum] = {
+	color = Yellow, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Cairo, Johannesburg, Kinshasa, Lagos}
+}
+mat[Kinshasa] = {
+	color = Yellow, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Johannesburg, Khartoum, Lagos}
+}
+mat[Kolkata] = {
+	color = Black, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Bangkok, Chennai, Delhi, HongKong}
+}
+mat[Lagos] = {
+	color = Yellow, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Khartoum, Kinshasa, SaoPaulo}
+}
+mat[Lima] = {
+	color = Yellow, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Bogota, MexicoCity, Santiago}
+}
+mat[London] = {
+	color = Blue, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Essen, Madrid, NewYork, Paris}
+}
+mat[LosAngeles] = {
+	color = Yellow, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Chicago, MexicoCity, SanFrancisco, Sydney}
+}
+mat[Madrid] = {
+	color = Blue, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Algiers, London, NewYork, Paris, SaoPaulo}
+}
+mat[Manila] = {
+	color = Red, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{HoChiMinhCity, SanFrancisco, Sydney, Taipei}
+}
+mat[MexicoCity] = {
+	color = Yellow, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Bogota, Chicago, Lima, LosAngeles, Miami}
+}
+mat[Miami] = {
+	color = Yellow, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Atlanta, Bogota, MexicoCity, Washington}
+}
+mat[Milan] = {
+	color = Blue, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Essen, Istanbul, Paris}
+}
+mat[Montreal] = {
+	color = Blue, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Chicago, NewYork, Washington}
+}
+mat[Moscow] = {
+	color = Black, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Istanbul, StPetersburg, Tehran}
+}
+mat[Mumbai] = {
+	color = Black, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Chennai, Delhi, Karachi}
+}
+mat[NewYork] = {
+	color = Blue, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{London, Madrid, Montreal, Washington}
+}
+mat[Osaka] = {
+	color = Red, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Taipei, Tokyo}
+}
+mat[Paris] = {
+	color = Blue, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Algiers, Essen, London, Madrid, Milan}
+}
+mat[Riyadh] = {
+	color = Black, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Baghdad, Cairo, Karachi}
+}
+mat[SanFrancisco] = {
+	color = Blue, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Chicago, LosAngeles, Manila, Tokyo}
+}
+mat[Santiago] = {
+	color = Yellow, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Lima}
+}
+mat[SaoPaulo] = {
+	color = Yellow, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Bogota, BuenosAires, Lagos, Madrid}
+}
+mat[Seoul] = {
+	color = Red, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Beijing, Shanghai, Tokyo}
+}
+mat[Shanghai] = {
+	color = Red, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Beijing, HongKong, Seoul, Taipei, Tokyo}
+}
+mat[StPetersburg] = {
+	color = Blue, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Essen, Istanbul, Moscow}
+}
+mat[Sydney] = {
+	color = Red, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Jakarta, LosAngeles, Manila}
+}
+mat[Taipei] = {
+	color = Red, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{HongKong, Manila, Osaka, Shanghai}
+}
+mat[Tehran] = {
+	color = Black, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Baghdad, Delhi, Karachi, Moscow}
+}
+mat[Tokyo] = {
+	color = Red, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Osaka, SanFrancisco, Seoul, Shanghai}
+}
+mat[Washington] = {
+	color = Blue, 
+	disease_level = 0, 
+	research_station = false, 
+	ni{Atlanta, Miami, Montreal, NewYork}
+}
