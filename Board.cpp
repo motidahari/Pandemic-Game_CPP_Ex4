@@ -14,13 +14,13 @@ namespace pandemic {
         Cure_discovered[getColorAsObject("Yellow")] = false;
     }
 
-    void Board::initGraph(std::ifstream& units_file){
+    void Board::initGraph(std::ifstream& cities_file){
         std::string line;
         std::string delimiter = " ";
         size_t pos = 0;
         std::string word;
         std::string city;
-        while(std::getline(units_file, line)){
+        while(std::getline(cities_file, line)){
             int run = 0;
             int length = line.length();
             while ((pos = line.find(delimiter)) != std::string::npos) {
@@ -108,7 +108,9 @@ namespace pandemic {
         return os;
     }
     bool Board::is_connected(const City city1, const City city2){
-        return (vertex.at(city1).neighbors.find(city2) != (vertex.at(city1).neighbors.end()) && (vertex.at(city2).neighbors.find(city1) != vertex.at(city2).neighbors.end()));
+        // return (vertex.at(city1).neighbors.find(city2) != (vertex.at(city1).neighbors.end()) && (vertex.at(city2).neighbors.find(city1) != vertex.at(city2).neighbors.end()));
+        return vertex[city1].neighbors.count(city2) > 0 && vertex[city2].neighbors.count(city1) > 0;
+
     }
     void Board::set_Cure_discovered(Color color){
         Cure_discovered[color] = true;

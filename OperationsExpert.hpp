@@ -13,6 +13,21 @@ namespace pandemic{
         public:
             // OperationsExpert(Board& board, City city): Player(board, city, "OperationsExpert") {}
             OperationsExpert(Board& board, City city):  Player(board, city){}
-            Player& build() {std::cout << "build() override OperationsExpert" << std::endl; return *this;}
+            Player& build() {
+                std::cout << "build() override OperationsExpert" << std::endl;
+                if (cards[curr_city] == true) {
+                    Player::build();
+                    cards[curr_city] = true; 
+                }else{
+                    cards[curr_city] = true; 
+                    Player::build();
+                }
+
+                
+                 return *this;}
+            // Player& drive(City city){return *this;}
+            // Player& fly_charter(City city){return *this;}
+            // Player& fly_shuttle(City city){return *this;}
+            // Player& fly_direct(City city){return *this;}
     };
 }

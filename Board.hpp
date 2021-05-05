@@ -24,9 +24,9 @@ namespace pandemic{
             std::map<Color, bool> Cure_discovered;
         public:
             Board(){
-                std::ifstream units_file{"cities_map.txt"};
+                std::ifstream cities_file{"cities_map.txt"};
                 initColor();
-                initGraph(units_file);
+                initGraph(cities_file);
             }
 
             int& operator[](City city);

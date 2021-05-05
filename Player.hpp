@@ -11,6 +11,7 @@ namespace pandemic {
         protected:
             Board& b;
             City curr_city;
+            std::string name;
             std::map<City, bool> cards;
         public: 
 
@@ -19,7 +20,10 @@ namespace pandemic {
             Player& fly_charter(City);
             Player& drive(City city);
             Player& fly_shuttle(City city);
-            Player& take_card(City c);
+            Player& take_card(City city);
+            bool checkCardByCity(City city);
+            City getCurrCity();
+            void printAllCards();
 
             virtual Player& build();
             virtual std::string role();

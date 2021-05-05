@@ -14,22 +14,22 @@ namespace pandemic {
                 }else{
                     throw invalid_argument{"ERROR - You are not in the city where you want to build a research station"};       
                 }
-                cout << "build\n";
+                // cout << "build\n";
                 
                 return *this;
         }
         Player& Player::fly_charter(City city) {
-                cout << "fly_charter -> cards["<< getCityAsString(curr_city) <<"] = " << cards[curr_city] << endl;
+                // cout << "fly_charter -> cards["<< getCityAsString(curr_city) <<"] = " << cards[curr_city] << endl;
                 if(cards[curr_city] == true){
                         cards[curr_city] = false;
                         curr_city = city;
-                        cout << "after change fly_charter -> cards["<< getCityAsString(curr_city) <<"] = " << cards[curr_city] << endl;
+                        // cout << "after change fly_charter -> cards["<< getCityAsString(curr_city) <<"] = " << cards[curr_city] << endl;
 
                 }else{
                         throw invalid_argument{"ERROR - It is not possible to move to the requested city because the city card is not in the cards in your hand"};   
                 }
 
-                cout << "fly_charter\n"; 
+                // cout << "fly_charter\n"; 
                 return *this;
                 }
         Player& Player::drive(City city){ 
@@ -38,7 +38,7 @@ namespace pandemic {
                 }else{
                      throw invalid_argument{"ERROR - The cities are not connected"};   
                 }
-                cout << "drive\n";
+                // cout << "drive\n";
                 return *this;
         }
         Player& Player::fly_shuttle(City city){ 
@@ -49,28 +49,34 @@ namespace pandemic {
                 }else{
                    throw invalid_argument{"ERROR - It is not possible to move to the requested city because there is no research station in your city or there is no research station in the city you requested"};           
                 }
-                cout << "fly_shuttle\n";
+                // cout << "fly_shuttle\n";
                 return *this;
         }
         Player& Player::take_card(City city){ 
-                cout << "take_card\n";
+                // cout << "take_card\n";
                 cards[city] = true;
                 return *this;
         }
-        std::string Player::role() {cout << "role() base Player\n"; return "Base Player"; }
+        std::string Player::role() {
+                cout << "role() base Player\n"; 
+                return name; 
+        }
+
         Player& Player::fly_direct(City city){ 
-                cout << "fly_direct -> cards["<<  getCityAsString(city) <<"] = " << cards[city] << endl;
+                // cout << "fly_direct -> cards["<<  getCityAsString(city) <<"] = " << cards[city] << endl;
                 if(cards[city] == true){
                         curr_city = city;
                         cards[city] = false;
-                        cout << "after change fly_direct -> cards["<<  getCityAsString(city) <<"] = " << cards[city] << endl;
+                        // cout << "after change fly_direct -> cards["<<  getCityAsString(city) <<"] = " << cards[city] << endl;
 
                 }else{
                      throw invalid_argument{"ERROR - It is not possible to move to the requested city because the city card is not in the cards in your hand"};      
                 }
                 
-                cout << "fly_direct\n";return *this;
+                // cout << "fly_direct\n";
+                return *this;
         }
+        
         Player& Player::discover_cure(Color color){
                 int count = 0;
                 City city[5] = {};
@@ -93,7 +99,7 @@ namespace pandemic {
                         }
                         b.set_Cure_discovered(color);
                 }else if(count < 5){
-                        cout << "count = " << count << "\n";
+                        // cout << "count = " << count << "\n";
                         throw invalid_argument{"ERROR - the amount of cards you have in the color you wanted is less than 5"};
                 }else{
                         throw invalid_argument{"ERROR - There is no research station in the requested city"};
@@ -111,12 +117,39 @@ namespace pandemic {
                                 throw invalid_argument{"ERROR - Attempt to decrease the disease was unsuccessful, because the disease_level is already 0"};
                         }
                         --b.getVertex()[city].disease_level;
-                        cout << "treat\n";return *this;
+                        // cout << "treat\n";return *this;
                 }else{
                         throw invalid_argument{"ERROR - Player Cannot treat outside of his current city"};
                 }
+                return *this;
                 
-        }	
+        }
+
+        bool Player::checkCardByCity(City city){
+                return cards[city];
+        }
+        City Player::getCurrCity(){
+                return curr_city;
+        }
+        void Player::printAllCards(){
+                cout << "cards = {";
+                int run = 0;
+                for(const auto& x: cards){
+                        if(x.second == true){
+                                if(run == 0){
+                                        cout << getCityAsString(x.first);
+                                }
+                                else{
+                                        cout << ", " << getCityAsString(x.first);
+
+                                }
+                                run++;
+                             
+                        }
+                }
+                cout << "};" << endl;
+        }
+	
 }
 
 

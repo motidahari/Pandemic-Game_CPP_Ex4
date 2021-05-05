@@ -16,22 +16,17 @@ using namespace pandemic;
 #include <iostream>
 #include <stdexcept>
 using namespace std;
-void foo(int b) {
-	b = 5;
-}
-
+#include <chrono>
+using namespace std::chrono;
 int main() {
+	auto start = high_resolution_clock::now();
+
 	Board board;  // Initialize an empty board (with 0 disease cubes in any city).
 	board[City::Kinshasa] = 3;      // put 3 yellow disease cubes in Kinshasa.
 	board[City::Kinshasa] = 2;      // change number of disease cubes in Kinshasa to 2.
 	board[City::MexicoCity] = 3;    // put 3 yellow disease cubes in MexicoCity
 	board[City::HoChiMinhCity] = 1; // put 1 red disease cube in HoChiMinhCity
 	board[City::Chicago] = 1;       // put 1 blue disease cube in Chicago
-	cout << City::Kinshasa << "\n";
-	cout << (int)City::Kinshasa << "\n";
-	cout << board[City::Chicago] << "\n";
-	foo(board[City::Chicago]);
-		cout << board[City::Chicago] << "\n";
 
 	OperationsExpert player {board, City::Atlanta};  // initialize an "operations expert" player on the given board, in Atlanta.
 	player.take_card(City::Johannesburg)
@@ -54,7 +49,7 @@ int main() {
 	try {
 		player.drive(City::Madrid);  // illegal action: Madrid is not connected to Washington.
 	} catch (const exception& ex) {
-	 	cout << "   caught exception: " << ex.what() << endl;  // prints a meaningful error message.
+	 	cout << "   caught exception000: " << ex.what() << endl;  // prints a meaningful error message.
 	}
 
 
@@ -64,7 +59,7 @@ int main() {
 	try {
 		player.fly_direct(City::Taipei);  // illegal action: you do not have the card of Taipei.
 	} catch (const exception& ex) {
-	 	cout << "   caught exception: " << ex.what() << endl;  // prints a meaningful error message.
+	 	cout << "   caught exception11111: " << ex.what() << endl;  // prints a meaningful error message.
 	}
 
 
@@ -79,12 +74,12 @@ int main() {
 	try {
 		player.treat(City::Kinshasa);  // illegal action: no more cubes remain in Kinshasa.
 	} catch (const exception& ex) {
-	 	cout << "   caught exception: " << ex.what() << endl;  // prints a meaningful error message.
+	 	cout << "   caught exception22222: " << ex.what() << endl;  // prints a meaningful error message.
 	}
 	try {
 		player.treat(City::Washington);  // illegal action: you are not in Washington.
 	} catch (const exception& ex) {
-	 	cout << "   caught exception: " << ex.what() << endl;  // prints a meaningful error message.
+	 	cout << "   caught exception3333: " << ex.what() << endl;  // prints a meaningful error message.
 	}
 
 
@@ -96,7 +91,7 @@ int main() {
 	try {
 		player.fly_charter(City::Seoul);  // illegal action: you do not have the Sydney card (the card of the city you are in).
 	} catch (const exception& ex) {
-	 	cout << "   caught exception: " << ex.what() << endl;  // prints a meaningful error message.
+	 	cout << "   caught exception4444: " << ex.what() << endl;  // prints a meaningful error message.
 	}
 
 
@@ -116,7 +111,7 @@ int main() {
 	try {
 		player.fly_shuttle(City::Chicago); // illegal action: there is no research station in Chicago.
 	} catch (const exception& ex) {
-	 	cout << "   caught exception: " << ex.what() << endl;  // prints a meaningful error message.
+	 	cout << "   caught exception5555: " << ex.what() << endl;  // prints a meaningful error message.
 	}
 
 
@@ -125,7 +120,7 @@ int main() {
 	try {
 		player.discover_cure(Color::Yellow); // illegal action: you only have 2 yellow cards remaining.
 	} catch (const exception& ex) {
-	 	cout << "   caught exception: " << ex.what() << endl;  // prints a meaningful error message.
+	 	cout << "   caught exception6666: " << ex.what() << endl;  // prints a meaningful error message.
 	}
 
 	player.take_card(City::Miami)
@@ -136,7 +131,7 @@ int main() {
 	try {
 		player.fly_direct(City::Miami); // illegal action: you discarded the Miami card to discover a cure, so you cannot use this card.
 	} catch (const exception& ex) {
-	 	cout << "   caught exception: " << ex.what() << endl;  // prints a meaningful error message.
+	 	cout << "   caught exception7777: " << ex.what() << endl;  // prints a meaningful error message.
 	}
 
 	/* treat action after discovering a cure */
@@ -159,5 +154,11 @@ int main() {
 
 	cout << board << endl;  // prints the board in any reasonable format.
 	cout << board.is_clean() << endl;  // prints "1" - the board is clean - congratulations!!! You treated all diseases!!!
+	auto stop = high_resolution_clock::now();
+	auto duration = duration_cast<microseconds>(stop - start);
+	cout << "**************************************** time = " << duration.count() << "****************************************" << endl;
 }
 
+/*
+make clean ; make ;clear && clang-9 -c Board.cpp && clang-9 -o run main.cpp Board.o Player.o -lstdc++ && ./run
+*/

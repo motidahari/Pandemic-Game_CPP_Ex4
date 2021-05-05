@@ -5,11 +5,21 @@
 #include "OperationsExpert.hpp"
 #include <iostream>
 #include <stdexcept>
+#include <vector>
 
 
 // using namespace pandemic;
 using namespace pandemic;
 using namespace std;
+
+const vector<string> cities {"Algiers","Atlanta","Baghdad","Bangkok","Beijing","Bogota","BuenosAires","Cairo","Chennai","Chicago","Delhi","Essen","HoChiMinhCity","HongKong","Istanbul","Jakarta","Johannesburg","Karachi","Khartoum","Kinshasa","Kolkata","Lagos","Lima","London","LosAngeles","Madrid","Manila","MexicoCity","Miami","Milan","Montreal","Moscow","Mumbai","NewYork","Osaka","Paris","Riyadh","SanFrancisco","Santiago","SaoPaulo","Seoul","Shanghai","StPetersburg","Sydney","Taipei","Tehran","Tokyo","Washington"};    // namespace pandemic{
+
+    City getRandomCity() {
+        string random = cities[(rand() % cities.size())]; 
+		cout << " random = "<< random << "\n";
+        return getCityAsObject(random);
+    }
+
 
 int main() {
 	// /*
@@ -81,30 +91,95 @@ int main() {
 	Board board;
 	// cout << board;
 
-	board[City::Cairo] = 100;
-	cout << board[City::Cairo] << " == 100 \n";
-	cout << board.is_clean() << " == 0 \n";
-	board[City::Cairo] = 0;
-	cout << board[City::Cairo] << " == 0 \n";
-	cout << board.is_clean() << " == 1 \n";
+	// board[City::Cairo] = 100;
+	// cout << board[City::Cairo] << " == 100 \n";
+	// cout << board.is_clean() << " == 0 \n";
+	// board[City::Cairo] = 0;
+	// cout << board[City::Cairo] << " == 0 \n";
+	// cout << board.is_clean() << " == 1 \n";
 	
 	
 	
-	Player p {board,City::Algiers};
-	p.discover_cure(Color::Red);
-	// cout << board;
-	board.remove_cures();
-	// cout << board;
-	bool check_research_station = board.getVertex()[City::Algiers].research_station;
-	p.build();
-	cout << "check_research_station = " << (!check_research_station == board.getVertex()[City::Algiers].research_station);
-	// cout << board;
-
+	// Player p {board,City::Algiers};
+	// p.discover_cure(Color::Red);
+	// // cout << board;
+	// board.remove_cures();
+	// // cout << board;
+	// bool check_research_station = board.getVertex()[City::Algiers].research_station;
+	// p.build();
+	// cout << "check_research_station = " << (!check_research_station == board.getVertex()[City::Algiers].research_station);
+	// cout << board;  
 	cout << "is_connected = "<< board.is_connected(City::Algiers, City::Cairo) << " == 1\n";
 	cout << "is_connected = "<< board.is_connected(City::Algiers, City::Istanbul) << " == 1\n";
 	cout << "is_connected = "<< board.is_connected(City::Algiers, City::Madrid) << " == 1\n";
 	cout << "is_connected = "<< board.is_connected(City::Algiers, City::Paris) << " == 1\n";
 	cout << "is_connected = "<< board.is_connected(City::Algiers, City::Washington) << " == 0\n";
+
+	// cout << "const vector<string> cities_in_Black {";
+	// int run = 0;
+	// for(const auto& x : board.getVertex()){
+	// 	if(x.second.color == getColorAsObject("black")){
+	// 		if(run == 0){
+	// 			cout << "\"" << getCityAsString(x.first) << "\"";
+	// 		}else{
+	// 			cout << ",\"" << getCityAsString(x.first) << "\"";
+	// 			// cout << ", "<< getCityAsString(x.first) ;
+	// 		}
+	// 		run++;
+	// 	}
+	// }
+	// cout << "};"<< endl;
+	
+
+
+	// cout << "const vector<string> cities_in_Blue {";
+	//  run = 0;
+	// for(const auto& x : board.getVertex()){
+	// 	if(x.second.color == getColorAsObject("Blue")){
+	// 		if(run == 0){
+	// 			cout << "\"" << getCityAsString(x.first) << "\"";
+	// 		}else{
+	// 			cout << ",\"" << getCityAsString(x.first) << "\"";
+	// 			// cout << ", "<< getCityAsString(x.first) ;
+	// 		}
+	// 		run++;
+	// 	}
+	// }
+	// cout << "};"<< endl;
+
+
+	// cout << "const vector<string> cities_in_Red {";
+	//  run = 0;
+	// for(const auto& x : board.getVertex()){
+	// 	if(x.second.color == getColorAsObject("Red")){
+	// 		if(run == 0){
+	// 			cout << "\"" << getCityAsString(x.first) << "\"";
+	// 		}else{
+	// 			cout << ",\"" << getCityAsString(x.first) << "\"";
+	// 			// cout << ", "<< getCityAsString(x.first) ;
+	// 		}
+	// 		run++;
+	// 	}
+	// }
+	// cout << "};"<< endl;
+
+
+
+	// cout << "const vector<string> cities_in_Yellow {";
+	//  run = 0;
+	// for(const auto& x : board.getVertex()){
+	// 	if(x.second.color == getColorAsObject("Yellow")){
+	// 		if(run == 0){
+	// 			cout << "\"" << getCityAsString(x.first) << "\"";
+	// 		}else{
+	// 			cout << ",\"" << getCityAsString(x.first) << "\"";
+	// 			// cout << ", "<< getCityAsString(x.first) ;
+	// 		}
+	// 		run++;
+	// 	}
+	// }
+	// cout << "};"<< endl;
+	// cout << getRandomCity();
 	// cout << board;
 	return 0;
 }	
