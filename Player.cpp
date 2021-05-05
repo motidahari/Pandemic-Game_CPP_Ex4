@@ -1,5 +1,8 @@
 #include "Player.hpp"
+#include <vector>
+
 using namespace std;
+const int num5 =  5;
 namespace pandemic {
 
         Player::Player(Board& board, City city):b(board), curr_city(city){
@@ -8,7 +11,7 @@ namespace pandemic {
                 }
         }
         Player& Player::build(){ 
-                if(cards[curr_city] == true || b.getVertex()[curr_city].research_station == true){
+                if(cards[curr_city] || b.getVertex()[curr_city].research_station){
                         b.getVertex()[curr_city].research_station = true;
                         cards[curr_city] = false;
                 }else{
@@ -20,7 +23,7 @@ namespace pandemic {
         }
         Player& Player::fly_charter(City city) {
                 // cout << "fly_charter -> cards["<< getCityAsString(curr_city) <<"] = " << cards[curr_city] << endl;
-                if(cards[curr_city] == true){
+                if(cards[curr_city]){
                         cards[curr_city] = false;
                         curr_city = city;
                         // cout << "after change fly_charter -> cards["<< getCityAsString(curr_city) <<"] = " << cards[curr_city] << endl;
@@ -44,7 +47,7 @@ namespace pandemic {
         Player& Player::fly_shuttle(City city){ 
                 // cout << " b.getVertex()["<< getCityAsString(curr_city) << "].research_station = " << b.getVertex()[curr_city].research_station; 
                 // cout << " b.getVertex()["<< getCityAsString(city) << "].research_station = " << b.getVertex()[city].research_station; 
-                if(b.getVertex()[curr_city].research_station == true &&  b.getVertex()[city].research_station == true){
+                if(b.getVertex()[curr_city].research_station &&  b.getVertex()[city].research_station){
                        curr_city = city;
                 }else{
                    throw invalid_argument{"ERROR - It is not possible to move to the requested city because there is no research station in your city or there is no research station in the city you requested"};           
@@ -64,7 +67,7 @@ namespace pandemic {
 
         Player& Player::fly_direct(City city){ 
                 // cout << "fly_direct -> cards["<<  getCityAsString(city) <<"] = " << cards[city] << endl;
-                if(cards[city] == true){
+                if(cards[city]){
                         curr_city = city;
                         cards[city] = false;
                         // cout << "after change fly_direct -> cards["<<  getCityAsString(city) <<"] = " << cards[city] << endl;
@@ -78,27 +81,25 @@ namespace pandemic {
         }
         
         Player& Player::discover_cure(Color color){
-                int count = 0;
-                City city[5] = {};
-                if(b.getVertex()[curr_city].research_station == true){
+                u_int count = 0;
+                vector<City> city(num5);
+                if(b.getVertex()[curr_city].research_station){
                         for(const auto &x : cards){
-                                if(count == 5){
+                                if(count == num5){
                                         break;
                                 }
-                                if(b.getVertex()[x.first].color == color && cards[x.first] == true){
-                                        // ;
-                                        *(city + count) = x.first;
+                                if(b.getVertex()[x.first].color == color && cards[x.first]){
+                                        city.at(count) = x.first;
                                         count++;
-                                        // cards[x.first] = false;
                                 }
                         }
                 }
-                if(count == 5){
+                if(count == num5){
                         for(const auto &x : city){
                            cards[x] = false;     
                         }
                         b.set_Cure_discovered(color);
-                }else if(count < 5){
+                }else if(count < num5){
                         // cout << "count = " << count << "\n";
                         throw invalid_argument{"ERROR - the amount of cards you have in the color you wanted is less than 5"};
                 }else{
@@ -110,9 +111,8 @@ namespace pandemic {
 
         Player& Player::treat(City city){
                 if(city == curr_city && b[city] > 0) {
-                        if(b.getCure_discovered()[b.getVertex()[city].color] == true){
+                        if(b.getCure_discovered()[b.getVertex()[city].color]){
                                 b.getVertex()[city].disease_level = 0;
-                                return *this;
                         }else if(b.getVertex()[city].disease_level == 0){
                                 throw invalid_argument{"ERROR - Attempt to decrease the disease was unsuccessful, because the disease_level is already 0"};
                         }
@@ -135,7 +135,7 @@ namespace pandemic {
                 cout << "cards = {";
                 int run = 0;
                 for(const auto& x: cards){
-                        if(x.second == true){
+                        if(x.second){
                                 if(run == 0){
                                         cout << getCityAsString(x.first);
                                 }
@@ -155,6 +155,8 @@ namespace pandemic {
 
 
 
+
+//make demo1 && ./demo1 && make demo2 && ./demo2 && make test && ./test && make tidy && make valgrind
 
 
 

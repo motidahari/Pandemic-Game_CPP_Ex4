@@ -39,7 +39,7 @@ namespace pandemic{
             void printMap();
             
             void printCure_discovered();
-            void initGraph(std::ifstream& units_file);
+            void initGraph(std::ifstream& cities_file);
             void initColor();
             std::map<City, Node>& getVertex(){
                 return this->vertex;

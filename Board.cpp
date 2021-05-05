@@ -57,7 +57,7 @@ namespace pandemic {
     void Board::printMap(){
         std::set<City>::iterator it;
         for (const auto &i : vertex) {
-            std::cout <<"mat["<< getCityAsString(i.first) << "] = {\n\tcolor = "<< getColorAsString(i.second.color) <<", \n\tdisease_level = "<< i.second.disease_level << ", \n\tresearch_station = "<< ((i.second.research_station == 0)? "false" : "true" )<< ", \n\tni{";
+            // std::cout <<"mat["<< getCityAsString(i.first) << "] = {\n\tcolor = "<< getColorAsString(i.second.color) <<", \n\tdisease_level = "<< i.second.disease_level << ", \n\tresearch_station = "<< ((i.second.research_station == 0)? "false" : "true" )<< ", \n\tni{";
             // std::cout <<"mat["<< i.first << "] = {color = "<< getColorAsString(i.second.color) <<", ni[";
             std::string ni;
             int run = 0;
@@ -88,7 +88,7 @@ namespace pandemic {
         std::set<City>::iterator it;
         for (const auto &i : b.vertex) {
             // str += "mat["<< getCityAsString(i.first) +  "] = {\n\tcolor = " + getColorAsString(i.second.color) + ", \n\tdisease_level = " +  i.second.disease_level + ", \n\tresearch_station = " + ((i.second.research_station == 0)? "false" : "true" )<< ", \n\tni{";
-            os <<"mat["<< getCityAsString(i.first) << "] = {\n\tcolor = "<< getColorAsString(i.second.color) <<", \n\tdisease_level = "<< i.second.disease_level << ", \n\tresearch_station = "<< ((i.second.research_station == 0)? "false" : "true" )<< ", \n\tni{";
+            os <<"mat["<< getCityAsString(i.first) << "] = {\n\tcolor = "<< getColorAsString(i.second.color) <<", \n\tdisease_level = "<< i.second.disease_level << ", \n\tresearch_station = "<< ((!i.second.research_station)? "false" : "true" )<< ", \n\tni{";
             // std::cout <<"mat["<< i.first << "] = {color = "<< getColorAsString(i.second.color) <<", ni[";
             std::string ni;
             int run = 0;

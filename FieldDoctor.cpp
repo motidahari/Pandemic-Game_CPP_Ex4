@@ -5,7 +5,7 @@ namespace pandemic {
     
      Player& FieldDoctor::treat(City city){
         if(b.is_connected(curr_city,city)){
-            if(b.getCure_discovered()[b.getVertex()[city].color] == true){
+            if(b.getCure_discovered()[b.getVertex()[city].color] ){
                 b.getVertex()[city].disease_level = 0;
             }else{
                 b.getVertex()[city].disease_level--;
