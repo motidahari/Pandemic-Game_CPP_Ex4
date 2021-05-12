@@ -3,7 +3,11 @@ using namespace std ;
 
 
 namespace pandemic {
-
+    Board::Board(){
+        std::ifstream cities_file{"cities_map.txt"};
+        initColor();
+        initGraph(cities_file);
+    }
     int& Board::operator[](City city) {
         return vertex[city].disease_level;
     }
@@ -13,7 +17,6 @@ namespace pandemic {
         Cure_discovered[getColorAsObject("Red")] = false;
         Cure_discovered[getColorAsObject("Yellow")] = false;
     }
-
     void Board::initGraph(std::ifstream& cities_file){
         std::string line;
         std::string delimiter = " ";
@@ -46,14 +49,12 @@ namespace pandemic {
         // printCure_discovered();
         // printMap();
     }
-
     void Board::printCure_discovered(){
         for (const auto &i : Cure_discovered) {
             std::cout <<"Cure_discovered["<< getColorAsString(i.first) << "] = " << i.second << "\n";
         }
         cout << "\n";
     }
-
     void Board::printMap(){
         std::set<City>::iterator it;
         for (const auto &i : vertex) {
@@ -72,8 +73,6 @@ namespace pandemic {
             std::cout <<"}" << "\n}\n";
         }
     }
-
-    
     bool Board::is_clean() {
         for(auto &x : vertex){
             if(x.second.disease_level > 0) {
@@ -82,7 +81,6 @@ namespace pandemic {
         }
         return true;
     }
-    
     std::ostream& operator<<(std::ostream& os,const Board& b) {
         std::string str;
         std::set<City>::iterator it;
@@ -112,7 +110,7 @@ namespace pandemic {
         return vertex[city1].neighbors.count(city2) > 0 && vertex[city2].neighbors.count(city1) > 0;
 
     }
-    void Board::set_Cure_discovered(Color color){
+    void Board::set_Cure_discovered(const Color color){
         Cure_discovered[color] = true;
     }
     void Board::remove_cures(){
@@ -120,6 +118,19 @@ namespace pandemic {
             i.second = false;
         }
     }
-
+    void Board::remove_stations(){
+        for (auto &i : vertex) {
+            i.second.research_station = false;
+        }
+    }
+    bool Board::is_cure(const City city){
+        return Cure_discovered[vertex[city].color];
+    }
+    std::map<City, Node>& Board::getVertex(){
+        return this->vertex;
+    }
+    std::map<Color, bool>& Board::getCure_discovered(){
+        return this->Cure_discovered;
+    }
     
 }

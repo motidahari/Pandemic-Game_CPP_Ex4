@@ -1,8 +1,3 @@
-Cure_discovered[Black] = 0
-Cure_discovered[Blue] = 0
-Cure_discovered[Red] = 0
-Cure_discovered[Yellow] = 0
-
 mat[Algiers] = {
 	color = Black, 
 	disease_level = 0, 
@@ -163,7 +158,7 @@ mat[Manila] = {
 	color = Red, 
 	disease_level = 0, 
 	research_station = false, 
-	ni{HoChiMinhCity, SanFrancisco, Sydney, Taipei}
+	ni{HoChiMinhCity, HongKong, SanFrancisco, Sydney, Taipei}
 }
 mat[MexicoCity] = {
 	color = Yellow, 
@@ -291,3 +286,7 @@ mat[Washington] = {
 	research_station = false, 
 	ni{Atlanta, Miami, Montreal, NewYork}
 }
+Cure_discovered[Black] = 0
+Cure_discovered[Blue] = 0
+Cure_discovered[Red] = 0
+Cure_discovered[Yellow] = 0
