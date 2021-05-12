@@ -105,21 +105,17 @@
 
 <div dir='ltr'>
 
-<<<<<<< HEAD
 	make test1 && ./test1
 	make test2 && ./test2
 	make test3 && ./test3
 	make tidy
 	make valgrind
-=======
-	make test && ./test
-   make tidy
-   make valgrind
->>>>>>> master
 
 </div>
 
 אין לשנות קבצים קיימים אלא רק להוסיף קבצים חדשים.
+
+בנוסף, לצורך הצגה, יש לכתוב תוכנית ראשית יצירתית, המדגימה את כל הפעולות של הלוח והשחקנים השונים.
 
 יש לפתור את המטלה באופן עצמאי.
 
@@ -128,3 +124,5 @@
 * יש לדווח על כל עזרה שקיבלתם, מסטודנטים אחרים או מהאינטרנט, בהתאם ל[תקנון היושר של המחלקה](https://www.ariel.ac.il/wp/cs/wp-content/uploads/sites/88/2020/08/Guidelines-for-Academic-Integrity.pdf).
 
 
+בהצלחה
+</div>
